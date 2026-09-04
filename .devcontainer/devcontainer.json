@@ -1,0 +1,34 @@
+{
+    "name": "ndof-patterns",
+    // Digest-pinned dev environment. This line is the only place the image
+    // digest lives: your editor starts the container from it and the
+    // reusable CI reads it from here. Bumped by hand when adopting a new
+    // image; Dependabot does not scan this file.
+    "image": "ghcr.io/ndof-opensource/ndof-dev@sha256:fd12b770aa426f399ce91b666b56e57a4eb24b12bff014ca306e53147e36cff8",
+    "remoteUser": "dev",
+    // Spec default, stated explicitly because Linux hosts depend on it: at
+    // create time the tool rebuilds the image with dev's uid/gid remapped to
+    // the host user's, keeping the bind-mounted checkout writable. VS Code
+    // and the devcontainer CLI honor this reliably; Zed has open bugs here.
+    "updateRemoteUserUID": true,
+    // Editor-agnostic tooling config lives in editor-agnostic files: clangd
+    // is configured by the repo's .clangd (every editor honors it). This
+    // block carries VS Code niceties only.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "llvm-vs-code-extensions.vscode-clangd",
+                "ms-vscode.cmake-tools",
+                // Debugger (gdb) only
+                "ms-vscode.cpptools"
+            ],
+            "settings": {
+                "C_Cpp.intelliSenseEngine": "disabled",
+                // Do not auto-configure on folder open: a fresh clone has no
+                // Conan-generated toolchain file until scripts/build.sh runs,
+                // and the auto-configure would fail against it.
+                "cmake.configureOnOpen": false
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+// VS Code tasks: Cmd/Ctrl+Shift+B runs the default build task. All tasks
+// run scripts/build.sh — the canonical wrapper with its guards — so a
+// shortcut build can never run against a stale or misconfigured tree.
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build (debug)",
+            "type": "shell",
+            "command": "scripts/build.sh debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build (release)",
+            "type": "shell",
+            "command": "scripts/build.sh release",
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build (asan)",
+            "type": "shell",
+            "command": "scripts/build.sh asan",
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build (tsan)",
+            "type": "shell",
+            "command": "scripts/build.sh tsan",
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}

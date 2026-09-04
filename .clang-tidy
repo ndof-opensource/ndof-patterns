@@ -1,0 +1,18 @@
+# Static analysis baseline. CI runs run-clang-tidy with -warnings-as-errors='*'.
+# Suppress a check only with an inline NOLINT(check-name) plus a justifying
+# comment — never by widening this list casually.
+Checks: >
+  bugprone-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -modernize-use-trailing-return-type,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -cppcoreguidelines-avoid-magic-numbers
+HeaderFilterRegex: 'include/ndof/.*'
+FormatStyle: file

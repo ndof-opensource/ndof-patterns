@@ -1,0 +1,32 @@
+// Zed project tasks: run from the task picker (`task: spawn`), or bind one
+// to a key in your personal keymap (~/.config/zed/keymap.json), e.g.:
+//   { "context": "Workspace",
+//     "bindings": { "cmd-b": ["task::Spawn", { "task_name": "build (debug)" }] } }
+// All tasks run scripts/build.sh — the canonical wrapper with its guards —
+// so a shortcut build can never run against a stale or misconfigured tree.
+[
+    {
+        "label": "build (debug)",
+        "command": "scripts/build.sh",
+        "args": ["debug"],
+        "reveal": "always"
+    },
+    {
+        "label": "build (release)",
+        "command": "scripts/build.sh",
+        "args": ["release"],
+        "reveal": "always"
+    },
+    {
+        "label": "build (asan)",
+        "command": "scripts/build.sh",
+        "args": ["asan"],
+        "reveal": "always"
+    },
+    {
+        "label": "build (tsan)",
+        "command": "scripts/build.sh",
+        "args": ["tsan"],
+        "reveal": "always"
+    }
+]
