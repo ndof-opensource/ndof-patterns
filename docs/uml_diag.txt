@@ -1,0 +1,41 @@
+@startuml
+!pragma layout smetana
+
+namespace ndof {
+
+class Proxy<F, AllocDummy, const_required, volatile_required, Alloc> {
+ 
+    + is_noexcept() : consteval static bool
+    + is_void_return() : consteval static bool
+    - inner : similarly_qualified_t<std::any>
+    - execute_ptr : ExecutePtr
+    + Proxy(StandaloneFunction auto f)
+    + Proxy(T&& object, MemberFunctionPtr auto f, Allocator& alloc)
+    + operator()(A&&... args) : return_type
+    + operator()(A&&... args) const : return_type
+    + operator()(A&&... args) volatile : return_type
+    + operator()(A&&... args) const volatile : return_type
+}
+
+class "Inner<f>" << (S,#ADD1B2) struct >> {
+    + {static} execute(qualified_any& a, A&&... args) : return_type
+}
+
+class "Inner<mf>" << (S,#ADD1B2) struct >> {
+    + ClassType : typename CallableTraits<decltype(mf)>::ClassType
+    + {static} execute(qualified_any& a, A&&... args) : return_type
+}
+
+class "Delete<T>" << (S,#ADD1B2) struct >> {
+    + alloc : Alloc<T>
+    + Delete(const Alloc<T>& a)
+    + operator()(T* ptr) : void
+}
+
+}
+
+ndof.Proxy o-- ndof.Delete : uses
+ndof.Proxy o-- ndof."Inner<f>" : instantiates
+ndof.Proxy o-- ndof."Inner<mf>" : instantiates
+
+@enduml
