@@ -1,5 +1,5 @@
- #pragma once
-
+#ifndef NDOF_PATTERNS_ANY_WITH_ALLOCATOR_HPP
+#define NDOF_PATTERNS_ANY_WITH_ALLOCATOR_HPP
 #include <expected>
 #include <memory>
 #include <type_traits>
@@ -257,3 +257,5 @@ private:
 };
 
 } // namespace nasa_erasure
+
+#endif // NDOF_PATTERNS_ANY_WITH_ALLOCATOR_HPP

@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef NDOF_PATTERNS_PROXY_V1_HPP
+#define NDOF_PATTERNS_PROXY_V1_HPP
 #include <exception>
 #include <memory>
 #include <optional>
@@ -204,3 +204,5 @@ auto make_proxy(F&& f)
 } // namespace ndof
 
 
+
+#endif // NDOF_PATTERNS_PROXY_V1_HPP

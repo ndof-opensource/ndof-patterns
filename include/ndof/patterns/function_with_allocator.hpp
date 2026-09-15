@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef NDOF_PATTERNS_FUNCTION_WITH_ALLOCATOR_HPP
+#define NDOF_PATTERNS_FUNCTION_WITH_ALLOCATOR_HPP
 #include <expected>
 #include <functional>
 #include <memory>
@@ -519,3 +519,5 @@ private:
 };
 
 } // namespace nasa_erasure
+
+#endif // NDOF_PATTERNS_FUNCTION_WITH_ALLOCATOR_HPP
