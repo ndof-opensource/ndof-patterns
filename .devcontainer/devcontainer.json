@@ -4,7 +4,7 @@
     // digest lives: your editor starts the container from it and the
     // reusable CI reads it from here. Bumped by hand when adopting a new
     // image; Dependabot does not scan this file.
-    "image": "ghcr.io/ndof-opensource/ndof-dev@sha256:ca126a58eae45dc8fd72cc9523e1ff2a00dd0071f38748b74916db32d7ba40bb",
+    "image": "ghcr.io/ndof-opensource/ndof-dev@sha256:bd2c567144c6966a846ad140aa649f27e619a71e601ca069bdc48bc4ddc86279",
     "remoteUser": "dev",
     // Spec default, stated explicitly because Linux hosts depend on it: at
     // create time the tool rebuilds the image with dev's uid/gid remapped to
